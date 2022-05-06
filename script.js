@@ -27,40 +27,39 @@ const renderCountry = function (data, className = '') {
   countriesContainer.style.opacity = 1;
 };
 
-const getCountryandNeighbor = function (country) {
-  // Older way to call.
-  // AJAX call country 1
-  const request = new XMLHttpRequest();
-  request.open('GET', `https://restcountries.com/v2/name/${country}`);
-  request.send();
+// const getCountryandNeighbor = function (country) {
+//   // Older way to call.
+//   // AJAX call country 1
+//   const request = new XMLHttpRequest();
+//   request.open('GET', `https://restcountries.com/v2/name/${country}`);
+//   request.send();
 
-  request.addEventListener('load', function () {
-    const [data] = JSON.parse(this.responseText);
-    console.log(data);
+//   request.addEventListener('load', function () {
+//     const [data] = JSON.parse(this.responseText);
+//     console.log(data);
 
-    // Render country 1
-    renderCountry(data);
+//     // Render country 1
+//     renderCountry(data);
 
-    // Get neighbors country (2)
-    const [neighbour] = data.borders;
+//     // Get neighbors country (2)
+//     const [neighbour] = data.borders;
 
-    if (!neighbour) return;
+//     if (!neighbour) return;
 
-    // AJAX call country 2
-    const request2 = new XMLHttpRequest();
-    request2.open('GET', `https://restcountries.com/v2/alpha/${neighbour}`);
-    request2.send();
+//     // AJAX call country 2
+//     const request2 = new XMLHttpRequest();
+//     request2.open('GET', `https://restcountries.com/v2/alpha/${neighbour}`);
+//     request2.send();
 
-    request2.addEventListener('load', function () {
-        const data2 = JSON.parse(this.responseText);
+//     request2.addEventListener('load', function () {
+//         const data2 = JSON.parse(this.responseText);
 
-        renderCountry(data2, 'neighbour');
-    })
-  });
-};
+//         renderCountry(data2, 'neighbour');
+//     })
+//   });
+// };
 
-getCountryandNeighbor('usa');
-
+// getCountryandNeighbor('usa');
 
 // const getCountryData = function (country) {
 //   // Older way to call.
@@ -97,4 +96,29 @@ getCountryandNeighbor('usa');
 
 // getCountryData('portugal');
 // getCountryData('germany');
+// getCountryData('usa');
+
+//   const request = new XMLHttpRequest();
+//   request.open('GET', `https://restcountries.com/v2/name/${country}`);
+//   request.send();
+
+// const request = fetch(`https://restcountries.com/v2/name/portugal`);
+
+// const getCountryData = function (country) {
+//   // Country 1
+//   fetch(`https://restcountries.com/v2/name/${country}`)
+//     .then(response => response.json())
+//     .then(data => {
+//       renderCountry(data[0]);
+//       const neighbour = data[0].borders[0];
+
+//       if (!neighbour) return;
+
+//       // country 2
+//       return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
+//     })
+//     .then(response => response.json())
+//     .then(data => renderCountry(data, 'neighbour'));
+// };
+
 // getCountryData('usa');
