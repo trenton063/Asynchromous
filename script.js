@@ -8,6 +8,11 @@ const countriesContainer = document.querySelector('.countries');
 
 ///////////////////////////////////////
 
+const renderError = function (msg) {
+  countriesContainer.insertAdjacentText('beforeend', msg);
+  // countriesContainer.style.opacity = 1;
+};
+
 const renderCountry = function (data, className = '') {
   const html = `
     <article class=" ${className}">
@@ -24,7 +29,7 @@ const renderCountry = function (data, className = '') {
     </article>
     `;
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  countriesContainer.style.opacity = 1;
+  // countriesContainer.style.opacity = 1;
 };
 
 // const getCountryandNeighbor = function (country) {
@@ -104,21 +109,30 @@ const renderCountry = function (data, className = '') {
 
 // const request = fetch(`https://restcountries.com/v2/name/portugal`);
 
-// const getCountryData = function (country) {
-//   // Country 1
-//   fetch(`https://restcountries.com/v2/name/${country}`)
-//     .then(response => response.json())
-//     .then(data => {
-//       renderCountry(data[0]);
-//       const neighbour = data[0].borders[0];
+const getCountryData = function (country) {
+  // Country 1
+  fetch(`https://restcountries.com/v2/name/${country}`)
+    .then(response => response.json())
+    .then(data => {
+      renderCountry(data[0]);
+      const neighbour = data[0].borders[0];
 
-//       if (!neighbour) return;
+      if (!neighbour) return;
 
-//       // country 2
-//       return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
-//     })
-//     .then(response => response.json())
-//     .then(data => renderCountry(data, 'neighbour'));
-// };
+      // country 2
+      return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
+    })
+    .then(response => response.json())
+    .then(data => renderCountry(data, 'neighbour'))
+    .catch(err => {
+      renderError(`somthing went wrong ${err.message} Try Again!`);
+    }).finally(() => {
+      countriesContainer.style.opacity = 1;
+    })
+};
 
-// getCountryData('usa');
+btn.addEventListener('click', function () {
+  getCountryData('portugal');
+});
+
+getCountryData('egsd')
