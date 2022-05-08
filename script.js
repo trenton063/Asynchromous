@@ -109,13 +109,13 @@ const renderCountry = function (data, className = '') {
 
 // const request = fetch(`https://restcountries.com/v2/name/portugal`);
 
-const getJSON = function (url, errorMsg = 'Something went wrong') {
-  fetch(url).then(response => {
-    if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
+// const getJSON = function (url, errorMsg = 'Something went wrong') {
+//   fetch(url).then(response => {
+//     if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
 
-    return response.json();
-  });
-};
+//     return response.json();
+//   });
+// };
 
 // const getCountryData = function (country) {
 //   // Country 1
@@ -130,8 +130,7 @@ const getJSON = function (url, errorMsg = 'Something went wrong') {
 //     })
 //     .then(data => {
 //       renderCountry(data[0]);
-//       // const neighbour = data[0].borders[0];
-//       const neighbour = 'dgf';
+//       const neighbour = data[0].borders[0];
 
 //       if (!neighbour) return;
 
@@ -152,6 +151,8 @@ const getJSON = function (url, errorMsg = 'Something went wrong') {
 //       countriesContainer.style.opacity = 1;
 //     });
 // };
+
+// getCountryData('usa');
 
 // const getCountryData = function (country) {
 //   // Country 1
@@ -243,3 +244,16 @@ GOOD LUCK 😀
 // };
 
 // WhereAmI(52.508, 13.381);
+
+// console.log('Test start');
+// setTimeout(() => {
+//   console.log('0 sec timer');
+// }, 0);
+// Promise.resolve('Resolved promise 1').then(res => console.log(res));
+
+// Promise.resolve('Resolved promise 2').then(res => {
+//   for (let i = 0; i < 1000; i++) {}
+//   console.log(res);
+// });
+
+// console.log('Test end');
