@@ -257,3 +257,42 @@ GOOD LUCK 😀
 // });
 
 // console.log('Test end');
+
+// const lotteryPromisr = new Promise(function (resolve, reject) {
+//   console.log('looter draw is happening');
+//   setTimeout(function () {
+//     if (Math.random() >= 0.5) {
+//       resolve('You win');
+//     } else {
+//       reject('you lost your money');
+//     }
+//   }, 2000);
+// });
+
+// lotteryPromisr.then(res => console.log(res)).catch(err => console.error(err));
+
+// // Promise setTimeout
+// const wait = function (seconds) {
+//   return new Promise(function (resolve) {
+//     setTimeout(resolve, seconds * 1000);
+//   });
+// };
+
+// wait(1)
+//   .then(() => {
+//     console.log('I waited for 1 seconds');
+//     return wait(1);
+//   })
+//   .then(() => {
+//     console.log('I waited for 2 seconds');
+//     return wait(1);
+//   })
+//   .then(() => {
+//     console.log('I waited for 3 seconds');
+//     return wait(1);
+//   })
+//   .then(() => console.log('I waited for 4 second'));
+
+//   Promise.resolve('abc').then(x => console.log(x));
+//   Promise.reject('abc').catch(x => console.error(c));
+
